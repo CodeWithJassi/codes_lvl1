@@ -1,0 +1,35 @@
+**C1 differnece between puts and print 
+    "puts" just print string
+
+    #include <stdio.h>
+    int main(){
+        int a,b,c;
+        if (1){
+            printf("hello%d"); //  hello12651768 ## hello+jsut random integer
+            puts("hello%d");   //  hello%d      ## also enter to nest line
+        }
+
+    }
+
+
+#include <stdio.h>
+int main(){
+    puts( 7 > 8 ? "pass" : " fail");
+    7 > 6 ? puts("PASS") : puts("fail");
+
+}
+
+
+// comparison of unsigned int defined is with signed
+#include <stdio.h>
+int main(){
+    unsigned int a = -1;
+
+    printf("%d \n", a);
+    printf("%u \n", a);
+
+    if (a == -1)
+        printf("it reads as signed integer");
+
+    return 0;
+}

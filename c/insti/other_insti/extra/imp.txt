@@ -1,0 +1,195 @@
+in c \b for backspace
+
+What '\ 0 means?
+'\0' is referred to as NULL character or NULL terminator It is the character equivalent of integer 0(zero) as it refers to nothing In C language it is generally used to mark an end of a string.
+
+
+########## ABCD ##########
+for(int i = 1; i <= 26; i++)
+printf("%c", 64 + i);
+
+>>>ABCDEFGHIJKLMNOPQRSTUVWXYZ
+
+65 = 'A'
+97 = 'a'
+
+
+
+########## '0' =/ 0 ##########
+#include <stdio.h>
+
+int main()
+{
+    int a = 0;
+    int b = '0';
+
+    printf("a = %d\n", a);
+    printf("b = %d\n", b);
+}
+
+>>>
+a = 0
+b = 48
+
+
+
+########## PATTERNS ##########
+
+> When to use what(not compulsion but make it easy in general)
+
+* when there is single lines its better to use matrix type where you use loop of j in loop of i
+    e.g. swastik.c, hollow_square.c, diagonal.c
+
+* when to there is varing lines which dependes upon input value use multiple loop for coloumn in loop of row
+    e.g. triangle2.c triangle3.c, 45deg_rot_square_half.c, 45deg_rot_square.c
+
+* exceptions 
+    sometimes if you can find better logic for matrix type then you can also perform it for varing lines
+    e.g. patterns.c
+
+
+########## Indentations ##########
+
+printf("%6d %-6d", 100, 100); // - for indentation from left
+printf("%6d %6d", 100, 100);  // + for indentation from right
+
+>>>
+
+   100 100
+   100    100
+
+
+########## Local and Global variable ##########
+
+//local variable
+
+for(int i = 1; i<= 10; i++)
+{
+    continue;
+}
+printf("%d", i);
+
+>>> error
+____________________________________________
+
+// variable of main function //we will come back to it later for more clearification
+
+int i;
+for(i = 1; i<= 10; i++)
+{
+    continue;
+}
+printf("%d", i);
+
+>>> 10
+
+____________________________________________
+
+
+#include <stdio.h>
+
+int var_in_global = 100;
+
+int func(){
+    int var_in_func = 200;
+    printf("hello from func\n");
+    // printf("%d", var_in_main); // will not work
+
+    return 0;
+}
+
+
+int main(){
+
+    int var_in_main = 300;
+
+    for (int var_in_loop = 1; var_in_loop <= 10; var_in_loop++)
+    {
+        int var_in_in_loop = 5;
+        continue;
+    }
+    printf("%d", var_in_global);
+    // printf("%d", var_in_func); // will not work
+    printf("%d", var_in_main); // works
+    // printf("%d", var_in_loop); // will not work
+    // printf("%d", var_in_in_loop); // will not work
+    
+    return 0;
+}
+
+------summary------
+var func to func not work
+var Global to everywhere works
+
+
+
+########## Function reuturn ##########
+
+#include <stdio.h>
+int main(){
+    while(printf("heelo\n"))
+    {
+        printf("yes");
+        break;
+    }
+    
+    return 0;
+}
+
+>>>
+heelo
+yes
+
+
+____________________________________________
+
+    printf(" >> %d\n", printf("qwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnm"));
+    printf(" >> %c\n", printf("heeo"));
+    printf(" >> %f\n", printf("heeo"));
+    printf(" >> %s\n", printf("heeo"));
+
+>>>
+qwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnm >> 52
+heeo >> ♦
+heeo >> 0.000000
+heeo >> 4
+heeo
+
+____________________________________________
+
+    count_char = printf("hello");
+    printf("\n%d", count_char);
+
+>>>
+hello
+5
+
+
+
+########## global local and local in scope ##########
+
+int a = 50; // global_variable
+
+void main()
+{
+    int a = 10; // local_variable
+    {
+        int a = 20; // local_in_scope_variable 
+        printf("the local variable defined in a scope is this %d\n", a);
+    }
+
+    printf("the local variable defined in the main function is this %d\n", a);
+
+    {
+        extern int a;
+        printf("the global variable defined outside functions is this %d\n", a);
+    }
+}
+
+
+>>>
+the local variable defined in a scope is this 20
+the local variable defined in the main function is this 10
+the global variable defined outside functions is this 50
+
+

@@ -1,0 +1,6 @@
+ p1   
+    c doesn't have built-in boolean it just operate on 0 as false anf non zero number as true
+    header files can be used ti add boolean
+
+p2
+    how to save strings in variable or just string data type
